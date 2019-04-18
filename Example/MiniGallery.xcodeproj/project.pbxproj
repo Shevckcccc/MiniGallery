@@ -28,9 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		321764FF0A7D8630F7BBBCE3 /* MiniGallery.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = MiniGallery.podspec; path = ../MiniGallery.podspec; sourceTree = "<group>"; };
+		321764FF0A7D8630F7BBBCE3 /* MiniGallery.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MiniGallery.podspec; path = ../MiniGallery.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		45F52D258A54C9AA927C19F6 /* Pods-MiniGallery_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniGallery_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniGallery_Tests/Pods-MiniGallery_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		4A44D58AC59B28407D947031 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		4A44D58AC59B28407D947031 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* MiniGallery_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniGallery_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		805640F377D5C033F79E0482 /* Pods-MiniGallery_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniGallery_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniGallery_Example/Pods-MiniGallery_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		91C35F2199A42803CBEB84E3 /* Pods-MiniGallery_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniGallery_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniGallery_Example/Pods-MiniGallery_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A00FB0F99BF99F6C887D1729 /* Pods_MiniGallery_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniGallery_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A020408FD36A762AF7AE93F5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		A020408FD36A762AF7AE93F5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		C13135FEC98695209A5728D5 /* Pods-MiniGallery_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniGallery_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniGallery_Tests/Pods-MiniGallery_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -315,12 +316,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MiniGallery_Example/Pods-MiniGallery_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MiniGallery/MiniGallery.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MiniGallery.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -482,6 +485,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MiniGallery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -497,6 +501,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MiniGallery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";

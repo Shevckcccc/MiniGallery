@@ -1,5 +1,4 @@
 import XCTest
-import MiniGallery
 
 class Tests: XCTestCase {
     

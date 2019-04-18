@@ -1,0 +1,23 @@
+PODS:
+  - MiniGallery (0.1.0):
+    - SnapKit
+  - SnapKit (4.2.0)
+
+DEPENDENCIES:
+  - MiniGallery (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SnapKit
+
+EXTERNAL SOURCES:
+  MiniGallery:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MiniGallery: 1b198aa9978682742683d6836bf98648df43f75f
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+
+PODFILE CHECKSUM: 435863a4e7961c59cb57d8d66623f48cc102ab45
+
+COCOAPODS: 1.5.3

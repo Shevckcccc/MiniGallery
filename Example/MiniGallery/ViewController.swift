@@ -7,18 +7,35 @@
 //
 
 import UIKit
+import MiniGallery
+import SnapKit
 
 class ViewController: UIViewController {
-
+    var gallery : Gallery!
+    var dataArr = NSMutableArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        gallery = Gallery()
+        gallery.dataSource = self
+        
+        self.view.addSubview(gallery)
+        gallery.snp.makeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+extension ViewController : GalleryDataSource {
+    
+    func galleryNumberOfItems() -> Int {
+        return 5
     }
-
+    
+    func gallery(modelForItemAt indexPath: IndexPath) -> GalleryModel? {
+        return nil
+    }
 }
 
