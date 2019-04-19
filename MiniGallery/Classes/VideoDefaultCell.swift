@@ -6,25 +6,53 @@
 //
 
 import UIKit
+import SnapKit
+import AVKit
 
 class VideoDefaultCell: UICollectionViewCell {
     
-    var titleLabel:UILabel?
+    var avPlayer: AVPlayer!
+    var playerLayer: AVPlayerLayer!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initView()
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func initView(){
-        titleLabel = UILabel(frame: CGRect(x: 5, y: 5, width: 100, height: 50))
-        contentView.layer.borderColor = UIColor.red.cgColor
-        contentView.layer.borderWidth = 1
-        addSubview(titleLabel!)
+    func setupViews(){
+        avPlayer = AVPlayer()
+        playerLayer = AVPlayerLayer(player: avPlayer)
+        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        playerLayer.frame = self.bounds
+        contentView.layer.addSublayer(playerLayer)
+        
+        contentView.backgroundColor = UIColor(red: 164/255, green: 176/255, blue: 190/255, alpha: 0.5)
+        
+        loopVideo(videoPlayer: avPlayer)
+    }
+    
+    func setVideoUrl(string: String) {
+        avPlayer.replaceCurrentItem(with: nil)
+        
+        let url = URL(string: string)
+        
+        // let asset = AVURLAsset(url: url!)
+        // asset.resourceLoader.delegate = MiniCacheManager.shared
+        
+        let playerItem = AVPlayerItem(url: url!)
+        avPlayer.replaceCurrentItem(with: playerItem)
+        self.avPlayer.play()
+    }
+    
+    func loopVideo(videoPlayer: AVPlayer) {
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: nil, using: {_ in
+            videoPlayer.seek(to: .zero)
+            videoPlayer.play()
+        })
     }
 }
 

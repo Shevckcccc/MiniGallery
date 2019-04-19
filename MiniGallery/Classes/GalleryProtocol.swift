@@ -32,10 +32,10 @@ extension GalleryDataSource {
 
 public protocol GalleryModel: class {
     
-    var videoUrl: String { get set }
+    var videoUrl : String? { get set }
     
-    var coverUrl: String { get set }
+    var imageUrl : String? { get set }
     
-    var title: String { get set }
+    var title : String? { get set }
 }
 

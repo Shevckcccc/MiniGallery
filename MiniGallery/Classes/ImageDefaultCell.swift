@@ -6,24 +6,33 @@
 //
 
 import UIKit
+import SnapKit
 
 class ImageDefaultCell: UICollectionViewCell {
     
-    var titleLabel:UILabel?
+    var imageView: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initView()
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
-    func initView(){
-        titleLabel = UILabel(frame: CGRect(x: 5, y: 5, width: 100, height: 50))
-        addSubview(titleLabel!)
-        contentView.layer.borderColor = UIColor.red.cgColor
-        contentView.layer.borderWidth = 1
+    func setupViews(){
+        imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.backgroundColor = UIColor.gray
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.gray.cgColor
+        addSubview(imageView)
+        imageView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.height.equalToSuperview().dividedBy(1.3)
+            make.width.equalToSuperview().dividedBy(1.3)
+        }
     }
 }

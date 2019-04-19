@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol ImageGalleryDelegate: class {
     func imageGallery(_ imageGallery: ImageGallery, didScrollTo indexPath: IndexPath)
@@ -17,7 +18,7 @@ class ImageGallery: UIView {
     var flowLayout : UICollectionViewFlowLayout!
     var delegate: ImageGalleryDelegate?
     var dataSource: GalleryDataSource?
-    let minimumLineSpacing : CGFloat = 30
+    let minimumLineSpacing : CGFloat = 40
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -70,8 +71,8 @@ extension ImageGallery : UICollectionViewDelegate, UICollectionViewDataSource, U
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ImageDefaultCell.self), for: indexPath) as! ImageDefaultCell
-        // let title = dataSource?.gallery(modelForItemAt: <#T##IndexPath#>)
-        cell.titleLabel?.text = String(format: "image: %i", indexPath.row)
+        let imageUrl = dataSource?.gallery(modelForItemAt: indexPath)?.imageUrl ?? ""
+        cell.imageView.sd_setImage(with: URL(string: imageUrl))
         return cell
     }
     
@@ -89,11 +90,9 @@ extension ImageGallery : UICollectionViewDelegate, UICollectionViewDataSource, U
         let cells = collectionView.visibleCells.filter { (cell) -> Bool in
             return cell.transform.a > 1
         }
-        guard cells.count > 0 else {
-            return
+        if (cells.count > 0) {
+            delegate?.imageGallery(self, didScrollTo: collectionView.indexPath(for: cells[0])!)
         }
-        
-        delegate?.imageGallery(self, didScrollTo: collectionView.indexPath(for: cells[0])!)
     }
 }
 

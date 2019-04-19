@@ -12,10 +12,16 @@ import SnapKit
 
 class ViewController: UIViewController {
     var gallery : Gallery!
-    var dataArr = NSMutableArray()
+    var activityIndicator: UIActivityIndicatorView!
+    var data = Array<GalleryModel>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+        loadData()
+    }
+    
+    func setupViews() {
         gallery = Gallery()
         gallery.dataSource = self
         
@@ -25,17 +31,32 @@ class ViewController: UIViewController {
             make.left.right.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        self.view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
+        activityIndicator.startAnimating()
+    }
+    
+    func loadData() {
+        GalleryService().loadData { items in
+            self.data = items;
+            self.gallery.reloadData()
+            self.activityIndicator.stopAnimating();
+        }
     }
 }
 
 extension ViewController : GalleryDataSource {
     
     func galleryNumberOfItems() -> Int {
-        return 5
+        return data.count
     }
     
     func gallery(modelForItemAt indexPath: IndexPath) -> GalleryModel? {
-        return nil
+        return data[indexPath.row]
     }
 }
 

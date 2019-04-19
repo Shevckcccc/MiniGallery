@@ -1,13 +1,21 @@
 PODS:
+  - Alamofire (4.8.2)
   - MiniGallery (0.1.0):
+    - SDWebImage
     - SnapKit
+  - SDWebImage (5.0.0):
+    - SDWebImage/Core (= 5.0.0)
+  - SDWebImage/Core (5.0.0)
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
+  - Alamofire
   - MiniGallery (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - SDWebImage
     - SnapKit
 
 EXTERNAL SOURCES:
@@ -15,9 +23,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MiniGallery: 1b198aa9978682742683d6836bf98648df43f75f
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  MiniGallery: df2aeb163f193d01f82b07690e91d8d520f79218
+  SDWebImage: 5de80a0302de9e377e62f47d2fa1304efff0e55f
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 435863a4e7961c59cb57d8d66623f48cc102ab45
+PODFILE CHECKSUM: 562af8cef681a2b000c19fbdfbfa14b7cca37ff4
 
 COCOAPODS: 1.5.3

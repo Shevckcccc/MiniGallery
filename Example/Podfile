@@ -1,11 +1,6 @@
 use_frameworks!
 
 target 'MiniGallery_Example' do
+  pod 'Alamofire'
   pod 'MiniGallery', :path => '../'
-
-  target 'MiniGallery_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end
